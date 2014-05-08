@@ -30,13 +30,13 @@ angular.module('myApp.controllers', [])
       //    $scope.song = snap;   
       // });
       $scope.song = syncData(['songs', $routeParams.id]);
-      $scope.mediaurl = $sce.trustAsResourceUrl('http://mozilla.github.io/pdf.js/web/viewer.html');
+      $scope.mediaurl = $sce.trustAsResourceUrl('');
       // data.$push();
       // data.$set({id: $routeParams.id});
 
       // $scope.song = data;
       $scope.song.$on('loaded', function() {
-         $scope.mediaurl = $sce.trustAsResourceUrl('http://mozilla.github.io/pdf.js/web/viewer.html?file='+$scope.song.chord);
+         $scope.mediaurl = $sce.trustAsResourceUrl($scope.song.chord);
       });
    }])
 
