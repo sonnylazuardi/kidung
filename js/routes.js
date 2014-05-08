@@ -10,6 +10,11 @@ angular.module('myApp.routes', ['ngRoute'])
          controller: 'HomeCtrl'
       });
 
+      $routeProvider.when('/songs/:id', {
+         templateUrl: 'partials/song.html',
+         controller: 'SongCtrl'
+      });
+
       $routeProvider.when('/chat', {
          templateUrl: 'partials/chat.html',
          controller: 'ChatCtrl'

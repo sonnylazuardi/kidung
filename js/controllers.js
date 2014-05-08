@@ -6,7 +6,36 @@ angular.module('myApp.controllers', [])
    .controller('HomeCtrl', ['$scope', 'syncData', function($scope, syncData) {
       // syncData('syncedValue').$bind($scope, 'syncedValue');
 
-      $scope.songs = syncData('songs', 10);
+      // $scope.songs = syncData('songs', 20);
+      $scope.songs = [];
+      $scope.loading = true;
+      var songs = syncData('songs');
+
+      songs.$on('loaded', function() {
+         var indexes = songs.$getIndex();
+         $scope.songs = [];
+         indexes.forEach(function(id) {
+            var item = songs[id];
+            item._id = id;
+            $scope.songs.push(item);
+         });
+         $scope.loading = false;
+      });
+   }])
+
+   .controller('SongCtrl', ['$scope', 'syncData', '$routeParams', 'firebaseRef', function($scope, syncData, $routeParams, firebaseRef) {
+      // syncData('syncedValue').$bind($scope, 'syncedValue');
+      // var sync = syncData(['songs', $routeParams.id]);
+      // syncData('songs').startAt($routeParams.id).endAt($routeParams.id).once('value', function(snap) {
+      //    $scope.song = snap;   
+      // });
+      $scope.song = syncData(['songs', $routeParams.id]);
+
+      // data.$push();
+      // data.$set({id: $routeParams.id});
+
+      // $scope.song = data;
+      
    }])
 
   .controller('ChatCtrl', ['$scope', 'syncData', function($scope, syncData) {

@@ -3,6 +3,7 @@
 
 <input type="text" ng-model="search" class="form-control">
 
+<i class="fa fa-refresh fa-spin" ng-show="loading"></i>
 <ul id="songs" ng-show="songs">
-    <li ng-repeat="song in songs | orderByPriority | reverse">{{song.title}} <small>{{song.artist}}</small></li>
+    <li ng-repeat="song in songs | filter: search"><a href="#/songs/{{song._id}}">{{song.title}}</a> <small>{{song.artist}}</small></li>
 </ul>
