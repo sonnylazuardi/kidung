@@ -23,19 +23,21 @@ angular.module('myApp.controllers', [])
       });
    }])
 
-   .controller('SongCtrl', ['$scope', 'syncData', '$routeParams', 'firebaseRef', function($scope, syncData, $routeParams, firebaseRef) {
+   .controller('SongCtrl', ['$scope', 'syncData', '$routeParams', '$sce', function($scope, syncData, $routeParams, $sce) {
       // syncData('syncedValue').$bind($scope, 'syncedValue');
       // var sync = syncData(['songs', $routeParams.id]);
       // syncData('songs').startAt($routeParams.id).endAt($routeParams.id).once('value', function(snap) {
       //    $scope.song = snap;   
       // });
       $scope.song = syncData(['songs', $routeParams.id]);
-
+      $scope.mediaurl = $sce.trustAsResourceUrl('http://mozilla.github.io/pdf.js/web/viewer.html');
       // data.$push();
       // data.$set({id: $routeParams.id});
 
       // $scope.song = data;
-      
+      $scope.song.$on('loaded', function() {
+         $scope.mediaurl = $sce.trustAsResourceUrl('http://mozilla.github.io/pdf.js/web/viewer.html?file='+$scope.song.chord);
+      });
    }])
 
   .controller('ChatCtrl', ['$scope', 'syncData', function($scope, syncData) {
