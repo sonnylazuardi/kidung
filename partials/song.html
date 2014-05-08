@@ -4,7 +4,11 @@
 <div ng-bind-html="song.content">
 </div>
 
-<a href="{{song.chord}}">Chord</a>
-<a href="{{song.media}}">Media</a>
+<iframe ng-src="{{mediaurl}}" width="100%" height="200px"></iframe>
 
-<embed ng-src="{{mediaurl}}" width="500" height="400"></embed>
+<object data="{{pdfurl}}" type="application/pdf" width="100%" height="800px">
+  <p>It appears you don't have a PDF plugin for this browser.
+  No biggie... you can <a href="myfile.pdf">click here to
+  download the PDF file.</a></p>
+</object>
+

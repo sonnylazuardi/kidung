@@ -30,13 +30,15 @@ angular.module('myApp.controllers', [])
       //    $scope.song = snap;   
       // });
       $scope.song = syncData(['songs', $routeParams.id]);
+      $scope.pdfurl = $sce.trustAsResourceUrl('');
       $scope.mediaurl = $sce.trustAsResourceUrl('');
       // data.$push();
       // data.$set({id: $routeParams.id});
 
       // $scope.song = data;
       $scope.song.$on('loaded', function() {
-         $scope.mediaurl = $sce.trustAsResourceUrl($scope.song.chord);
+         $scope.pdfurl = $sce.trustAsResourceUrl($scope.song.chord);
+         $scope.mediaurl = $sce.trustAsResourceUrl($scope.song.media);
       });
    }])
 
