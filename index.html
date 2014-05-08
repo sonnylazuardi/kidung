@@ -9,15 +9,21 @@
 </head>
 <body ng-cloak-auth class="hide">
   <div class="container">
-    <div class="navbar">
-      <div class="navbar-inner">
-        <ul class="nav navbar-nav">
-          <li><a href="#/home">home</a></li>
-        </ul>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <ul class="nav navbar-nav">
+              <li><a href="#/home">Kidung</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div ng-view></div>
+        <hr>
+        Built with <span class="glyphicon glyphicon-heart"></span> by @sonnylazuardi
       </div>
     </div>
-
-    <div ng-view></div>
   
   </div>
   <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
